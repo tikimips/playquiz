@@ -155,11 +155,6 @@ export default function EditQuizPage() {
     await supabase.from('questions').update({ image_url: image_url || null }).eq('id', qId)
   }
 
-  async function updateQuestionImage(qId: string, image_url: string) {
-    setQuestions(prev => prev.map(q => q.id === qId ? {...q, image_url} : q))
-    await supabase.from('questions').update({ image_url: image_url || null }).eq('id', qId)
-  }
-
   async function updateOption(optId: string, qId: string, text: string) {
     setQuestions(prev => prev.map(q => q.id === qId ? { ...q, options: q.options.map(o => o.id === optId ? {...o, text} : o) } : q))
     await supabase.from('options').update({ text }).eq('id', optId)

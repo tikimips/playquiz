@@ -14,6 +14,7 @@ export interface Question {
   id: string
   quiz_id: string
   text: string
+  image_url: string | null
   time_limit: number
   points: number
   order_index: number
